@@ -1,0 +1,130 @@
+body {
+	background-color: #83e3a6;
+	background-image: -webkit-linear-gradient(65deg, #83e3a6 50%, #e4e9fd 50%);
+	min-height: 1000px;
+	font-family: "helvetica neue";
+	background-repeat: no-repeat;
+}
+.navbar navbar-expand-lg {
+	background-color: #e4e9fd;
+	font-size: 2.5vw;
+}
+
+h1 {
+	color: #fff;
+	padding: 10px;
+}
+
+.box {
+	max-width: 800px;
+	margin: 50px auto;
+	background: white;
+	border-radius: 5px;
+	box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+#heading {
+	background-color: #83e3a6;
+	text-align: center;
+	font-size: 4vw;
+}
+
+.item {
+	min-height: 70px;
+	display: flex;
+	align-items: center;
+	border-bottom: 2px solid #f1f1f1;
+}
+
+.item:last-child {
+	border-bottom: 0;
+}
+
+.fa-solid {
+	min-height: 50px;
+	width: 50px;
+	border-color: transparent;
+	background-color: #83e3a6;
+	color: #fff;
+	font-size: 30px;
+	padding-bottom: 6px;
+	border-width: 0;
+}
+
+input[type="text"] {
+	text-align: center;
+	border: none;
+	background: transparent;
+	font-weight: 200;
+	font-size: 25px;
+}
+
+#addListInput {
+	text-align: center;
+	border: none;
+	background: transparent;
+	font-weight: 200;
+	font-size: 25px;
+}
+#addListInput:focus {
+	outline: none;
+	box-shadow: inset 0 -3px 0 0 #83e3a6;
+}
+
+input[type="text"]:focus {
+	outline: none;
+	box-shadow: inset 0 -3px 0 0 #83e3a6;
+}
+
+::placeholder {
+	color: grey;
+	opacity: 1;
+}
+
+footer {
+	color: white;
+	color: rgba(0, 0, 0, 0.5);
+	text-align: center;
+}
+
+.dropdown-menu {
+	background-color: #e4e9fd;
+}
+
+.deleteAllBtn {
+	background-color: #83e3a6;
+	color: #fff;
+	margin-top: 8px;
+	width: 522px;
+}
+.deleteAllBtn:hover {
+	background-color: #83e3a6;
+}
+@media only screen and (max-device-width: 375px) {
+	input[type="text"] {
+		font-size: 40px;
+	}
+	.box {
+		max-width: 900px;
+		margin: 50px auto;
+		background: white;
+		border-radius: 5px;
+		box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+	}
+	h1 {
+		font-size: 50px;
+	}
+	footer {
+		font-size: 25px;
+	}
+	.navbar-nav,
+	#addListInput,
+	a.navbar-brand,a.nav-link.active {
+		font-size: 3vw;
+	}
+	.deleteAllBtn {
+		font-size: 40px;
+		width: 597px;
+	}
+	
+}

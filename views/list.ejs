@@ -1,0 +1,101 @@
+<%- include("header") -%>
+<%- include('functions.ejs') %> 
+	<nav class="navbar navbar-expand-lg col-12">
+			<div class="container-fluid">
+			  <a class="navbar-brand" href="/">MY To Do Lists</a>
+			  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="drop"   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              all lists
+            </a>
+            <ul class="dropdown-menu" id="lists" >
+              
+
+        <% lists.forEach( (list) => { %>
+            
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href=  <%=`/${list.name}` %>  ><%= getShortName(list.name) %> </a>
+                </li>
+            
+              
+       <% }); %> 
+      </ul>
+    </li>
+				</ul>
+        <form class="d-flex" role="search" method="post" action="/addList">
+          <input id="addListInput" class="form-control me-2" name="addListInput" type="text" placeholder="Create new list" autocomplete="off">
+          <button class="fa-solid fa-plus " name="addListhBtn" type="submit"></button>
+        <input type="hidden" name="CurrListName" value="<%= listTitle %>"></input>
+
+        </form>
+			  </div>
+			</div>
+		  </nav>
+
+<div class="box" id="heading">
+  <h1> <%=getShortName(listTitle) %> </h1>
+</div>
+  <div class="box container-fluid p-5">
+
+  <%  newListItems.forEach((item) =>{ %>
+
+    <form action="/update" method="post">
+      <div class="item row" >
+      <div class="col-9  w-95">
+        <input class="form-control" type="text"  name="itemName" onchange="this.form.submit()" autocomplete="off" value="<%=item.name%>"></input>
+      </div>
+      <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+      <input type="hidden" name="id" value="<%=item._id%>"></input>
+      <input type="hidden" name="oldName" value="<%=item.name%>"></input>
+
+    </form>
+    <form class="col-3" action="/delete" method="post">
+      <button class="fa-solid fa-trash position-relative top-0 start-50"  onClick="this.form.submit()" formaction="/delete" >
+        <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+        <input type="hidden" name="id" value="<%=item._id%>"></input>
+        <input type="hidden" name="oldName" value="<%=item.name%>"></input>
+  </form>
+  </div>
+  <%  }) %>
+
+
+      <form  action="/" method="post">
+        <div class="item row">
+        <div class="item col-9">
+        <input class="form-control" type="text" name="newItem" placeholder="New Item" autocomplete="off">
+      </div>
+        <div class="item col-3" >
+          <button class="fa-solid fa-plus position-relative top-0 start-50"  type="submit" name="list" value="<%= listTitle %>"></button>
+      </div>
+    </div>
+      </form>
+
+      <form  action="/deleteAll" method="post">
+       <div class="row">
+        <div class="d-grid gap-2">
+        <button class="btn deleteAllBtn" type="submit" name="delteAll">Delete All</button>
+        <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+      </div>
+    </div>
+      </form>
+
+      
+  </div>
+
+ <script>
+  if(document.getElementById('lists').childElementCount === 0){
+    console.log("fasfsafa");
+      document.getElementById('drop').setAttribute('disabled',true);
+  }
+  else{
+      document.getElementById('lists').removeAttribute('disabled',false);
+
+  }
+  
+</script>
+
+<%- include("footer") -%>
